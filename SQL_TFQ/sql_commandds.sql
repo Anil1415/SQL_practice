@@ -1,0 +1,135 @@
+-- select * from information_schema.tables where table_schema='public';
+select * from information_schema.tables where table_schema = 'public';
+drop table products_constraints, products1;
+--
+
+--> Syntax for alter table in PostgreSQL
+
+-- Add new column
+    ALTER TABLE table_name
+	ADD COLUMN column_name datatype column_constraint;
+
+alter table products
+	drop column if exists branch_location;
+alter table products 
+	add column branch_location varchar(50) default 'Bangalore';
+select * from products;
+--
+-- Add new column
+	ALTER TABLE table_name
+	DROP COLUMN column_name;
+
+-- Add new column
+	ALTER TABLE table_name
+	RENAME COLUMN column_name
+	TO new_column_name;
+
+-- Add new column
+	ALTER TABLE table_name
+	ALTER COLUMN column_name
+	[SET DEFAULT value | DROP DEFAULT];
+
+-- Add new column
+	ALTER TABLE table_name
+	ADD CHECK expression;
+
+-- Add new column
+	ALTER TABLE table_name
+	ADD CONSTRAINT constraint_name constraint_definition;
+
+-- Add new column
+	ALTER TABLE table_name
+	RENAME TO new_table_name;
+
+-- Add new column
+	ALTER TABLE table_name
+    ALTER COLUMN column_name TYPE data_type;
+
+--
+--------------
+-- SCHEMA ----
+--------------
+
+create schema dev;
+
+select * from public.customers;
+
+select * from dev.customers;
+
+create table dev.customers (customer_id int);
+
+---
+-- sql commands
+-- UPDATE
+select * from products;
+
+update products 
+set branch_location = 'Mumbai'
+where prod_name = 'Personal Account';
+
+-- Delete
+
+select * from Employees;
+
+delete from employees
+where salary > 6000;
+
+-- TRUNCATE
+-- deletes  all the delete
+--- diff b/w truncate and delete
+
+1--> truncate always removes all the table data whereas 
+       -->    delete removes some or all the record using WHERE Condition.
+2 --> Truncate is much faster than delete internally
+3 --> Truncate(DDL) whereas Delete(DML
+
+--
+--- diff b/w truncate and delete and drop
+
+1--> truncate and delete removes the data whereas drop removes the table structure.
+truncate table employees;
+
+
+-- MERGE
+select * from Employees;
+--
+insert into employees values ('E1', 'Mohan Kumar', 5000, 'Male');
+insert into employees values ('E2', 'David Smith', 5500, 'Male');
+insert into employees values ('E3', 'Eshal Maryam', 6000, 'Female');
+insert into employees values ('E4', 'Pooja', 7000, 'Female');
+insert into employees values ('E5', 'Robin Hood', 9000, 'Male');
+--
+create table emp_history 
+as 
+select * from employees where 1=2; -- filtering to get data structure
+--
+select * from emp_history;
+-- emp_history was empty
+
+-- create a process where we backup employees every 6 months into hist table
+-- merge into table_name
+
+merge into emp_history h
+using employees e on e.emp_id = h.emp_id
+when matched then
+	update set salary  = e.salary
+when not matched then 
+	insert (emp_id, emp_name, salary, gender)
+	values(e.emp_id, e.emp_name, e.salary, e.gender);
+--
+update employees 
+set salary =100 where emp_id = "E1";
+
+select * from employees;
+--
+merge into emp_history h
+using employees e on e.emp_id = h.emp_id
+when matched then
+	update set salary  = e.salary
+when not matched then 
+	insert (emp_id, emp_name, salary, gender)
+	values(e.emp_id, e.emp_name, e.salary, e.gender);
+select * from emp_history;
+
+--
+
