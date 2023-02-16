@@ -164,7 +164,7 @@ create table Customers
 insert into customers values
 ('C1', 'Aman', 'Verma', 9900887701, 'Bangalore', to_date('01-01-1990', 'dd-mm-yyyy')),
 ('C2', 'Suraj', 'Chopra', 9900887702, 'Mumbai', to_date('01-01-1995', 'dd-mm-yyyy')),
-('C3', 'Gowri', 'Rathod', 9900887703, 'Pune', to_date('01-01-1980', 'dd-mm-yyyy'));
+('C3', 'Gowri', 'Rathod', , 'Pune', to_date('01-01-1980', 'dd-mm-yyyy'));
 
 -- select * from Customers;
 select * from customers;
@@ -180,12 +180,12 @@ create table Accounts
 	Date_of_Opening		date
 );
 
-insert into Accounts values (1100400901, 500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
-insert into Accounts values (1100400902, 1500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
-insert into Accounts values (1100400903, 800, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
-insert into Accounts values (1100400904, 900, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
-insert into Accounts values (1100400905, 4500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
-insert into Accounts values (1100400906, 8500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400908, 500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400909, 1500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400907, 800, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400910, 900, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400911, 4500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
+insert into Accounts values (1100400912, 8500, 'Active', to_date('10-02-2020', 'dd-mm-yyyy'));
 
 select * from Accounts;
 
@@ -331,4 +331,6 @@ create table Customer_Accounts
 -- Add new column
 	ALTER TABLE table_name
     ALTER COLUMN column_name TYPE data_type;
+
+
 
