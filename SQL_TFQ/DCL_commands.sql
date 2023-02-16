@@ -5,31 +5,40 @@ select * from Customers;
 select * from Accounts;
 select * from Transactions;
 -- select * from Customer_Accounts; 
+select * from information_schema.tables where table_schema='public';
+
+select * from Customer_Accounts;
+
+select * from customers;
 
 
+-- view is database object formed over a sql query
+-- view does not store data
+drop view if exists vw_customers
 create view vw_customers
 as
 select customer_id,(first_name||' '||last_name) as customer_name
 from customers;
 
--- view is an object of customers 
--- executes the original table
 select * from vw_customers;
 
+-- view is an object of customers 
+-- executes the original table
+
 drop user vendor;
-create user vendor;
+create user accenture;
 
-grant select on vw_customers to vendor;
+grant select on vw_customers to accenture;
 
-revoke all on vw_customers from vendor;
+revoke all on vw_customers from accenture;
 
 
 -- Basic sql queries
 
 -- select --> DQL commands: used to fetch data from database, 
 	-- Key_Words: select * from  
-			-- SELECT --> Mention all column_name
-			-- FROM   --> Mention the first_table_name
+			-- SELECT --> Mention all column_name or *
+			-- FROM   --> Mention the table_name
 			-- JOIN   --> Mention if there are more than 1(one) table
 			-- WHERE  --> Filter the data
 			-- GROUP BY --> Group the data based on specific columns

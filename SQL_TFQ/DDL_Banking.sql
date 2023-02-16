@@ -26,4 +26,4 @@ product_id type varchar(10)
 
 
 
-create the remaaining banking table with correct data types;
+create the remaining banking table with correct data types;
